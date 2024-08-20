@@ -1,11 +1,11 @@
-Here's a template for a `README.md` file that covers the essential aspects of your application:
+Here’s the updated `README.md` file for your application:
 
 ```markdown
 # GIF Store Application
 
 ## Overview
 
-This application is a GIF store that allows users to view trending GIFs, search for specific GIFs, and purchase GIFs using Stripe for payment processing. It integrates with a CRM system to log payment details.
+This application is a GIF store that allows users to view trending GIFs, search for specific GIFs, and purchase GIFs using Stripe for payment processing. It integrates with a CRM system to log payment details and includes role-based access control, allowing only managers to access certain features.
 
 ## Features
 
@@ -13,6 +13,7 @@ This application is a GIF store that allows users to view trending GIFs, search 
 - **Search GIFs**: Search for GIFs by keyword.
 - **Purchase GIFs**: Buy GIFs using Stripe's secure checkout process.
 - **User Authentication**: Secure login and logout functionality.
+- **Role-Based Access Control**: Only managers can access certain features, like viewing CRM data.
 - **CRM Integration**: Logs payment details to a CRM system.
 - **API Documentation**: Auto-generated API documentation using Swagger.
 
@@ -65,9 +66,10 @@ This application is a GIF store that allows users to view trending GIFs, search 
    PORT=5000
    STRIPE_SECRET_KEY=your_stripe_secret_key
    FRONTEND_URL=http://localhost:3000
+   JWT_SECRET=your_jwt_secret
    ```
 
-   (Adjust `FRONTEND_URL`  as needed)
+   Adjust `FRONTEND_URL` as needed.
 
 ### Running the Application
 
@@ -123,7 +125,7 @@ This application is a GIF store that allows users to view trending GIFs, search 
 - **Log Payment**
 
   - **Endpoint:** `GET /api/data`
-  - **Description:** get payment details in the CRM.
+  - **Description:** Get payment details in the CRM.
   - **Data:**
     - `userId` (string): ID of the user making the payment
     - `gifId` (string): ID of the GIF being purchased
@@ -133,13 +135,21 @@ This application is a GIF store that allows users to view trending GIFs, search 
     - `paymentDate` (string): Date of the payment
     - `errorMessage` (string, optional): Error message if any
 
+## Role-Based Access
+
+- **Manage CRM Data**
+
+  - **Endpoint:** `/manage`
+  - **Description:** Access restricted to users with the manager role (role 0).
+  - **Implementation:** The "Manage" tab is only visible to managers in the frontend, and backend routes check user roles before granting access.
+
 ## Contributing
 
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/YourFeature`)
-5. Create a new Pull Request
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Create a new Pull Request.
 
 ## License
 
@@ -147,10 +157,33 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- [Stripe](https://stripe.com) for payment processing
-- [Swagger](https://swagger.io) for API documentation
-- [React](https://reactjs.org) and [Bootstrap](https://getbootstrap.com) for frontend development
-- [Node.js](https://nodejs.org) and [Express](https://expressjs.com) for backend development
+- [Stripe](https://stripe.com) for payment processing.
+- [Swagger](https://swagger.io) for API documentation.
+- [React](https://reactjs.org) and [Bootstrap](https://getbootstrap.com) for frontend development.
+- [Node.js](https://nodejs.org) and [Express](https://expressjs.com) for backend development.
 ```
 
-Feel free to adjust this template based on the specifics of your project and any additional information you'd like to include.
+This `README.md` provides a comprehensive overview of your application, including its features, setup instructions, and API details. Adjust the content as needed based on the specific details of your project.
+
+
+demo users :
+
+// Example user array (for demonstration purposes only)
+const users = [
+    {
+        id: 0,
+        username: "manger",
+        passwordHash:
+            "$2b$10$G4sNLTajBrT/NVdL5zURY.LQk0Dld2o40JYCjEFjngE3fppMJQIy6",
+        role: 0
+    },
+    {
+        id: 1,
+        username: "user1",
+        passwordHash:
+            "$2b$10$G4sNLTajBrT/NVdL5zURY.LQk0Dld2o40JYCjEFjngE3fppMJQIy6",
+        role: 1
+    }
+];
+
+password : test
