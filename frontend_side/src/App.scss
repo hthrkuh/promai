@@ -1,0 +1,211 @@
+.container-fluid {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100%;
+  width: 100%;
+  zoom: 0.8;
+  background-color: #dadada;
+
+
+  @media only screen and (min-width: 700px) {
+    display: grid;
+    grid-template-areas: 'header''main';
+  }
+
+  .appLoading {
+    color: #000;
+  }
+
+  .Mycontainer {
+    display: flex;
+    background-color: #f4f6f8;
+    position: relative;
+    height: 100%;
+    grid-area: main;
+    overflow: auto;
+
+    @media only screen and (max-width: 700px) {
+      .mainWrapper {
+        padding: 0 !important;
+      }
+
+      >.sideNav {
+        display: none;
+      }
+    }
+
+    .mainWrapper {
+      padding: 0 0 0 271px;
+      flex: 0 1 auto;
+      justify-self: center;
+      width: 100%;
+      height: 100%;
+
+      .sweet-loading {
+        margin-left: 50%;
+        margin-top: 15%;
+      }
+
+      .contentWrapper {
+        height: 100%;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        padding: 28px 38px;
+      }
+    }
+
+    .dashboard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+
+      // background-color:#f4f6f8;
+      >div {
+        width: 90%;
+        margin-top: 30px;
+      }
+
+      .homeheader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+
+        .title {
+          order: 0;
+          flex: 0 0 auto;
+          font-size: xxx-large;
+          font-family: 'Nunito Sans Bold';
+        }
+
+        .date {
+          order: 1;
+          flex: 0 0 auto;
+          font-size: x-large;
+          color: #4a5568;
+        }
+      }
+
+      .updateWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        .updateBox {
+          flex: 0 0 auto;
+          margin: 0 0 30px;
+          position: relative;
+          background-color: #ffffff;
+          border-radius: 5px;
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+          overflow: hidden;
+          display: flex;
+          height: inherit;
+          min-height: 200px;
+          max-height: 200px;
+          transition: all 0.5s;
+
+          .fadeout {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            z-index: 1;
+            background: rgb(255, 255, 255);
+            background: linear-gradient(0deg,
+                rgba(255, 255, 255, 1) 30%,
+                rgba(0, 212, 255, 0) 100%);
+          }
+
+          .text {
+            padding: 20px 30px;
+            flex: 1 0 auto;
+
+            ul {
+              margin: 20px 0;
+            }
+          }
+
+          .extra {
+            padding: 10px 20px;
+            width: 150px;
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 2;
+
+            .date {
+              color: #a5acb9;
+              font-size: large;
+              font-weight: 500;
+            }
+
+          }
+
+          &.opened {
+            max-height: 100%;
+          }
+        }
+      }
+    }
+  }
+
+
+  /* -----------loading----------- */
+
+
+  .content {
+
+    align-items: center;
+    justify-content: center;
+    animation: bg 1.4s cubic-bezier(0, 0.2, 0.8, 1);
+  }
+
+  // h1 {
+  //   font-size: 64px;
+  //   transition: 0.5s;
+  // }
+
+  .loading {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+  }
+
+  .loading div {
+    position: absolute;
+    background: rgb(0, 255, 242);
+    opacity: 1;
+    border-radius: 50%;
+    animation: loading 1.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+
+  .loading div:nth-child(2) {
+    animation-delay: -.7s;
+  }
+
+  @keyframes loading {
+    0% {
+      top: 28px;
+      left: 28px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+
+    100% {
+      top: -1px;
+      left: -1px;
+      width: 58px;
+      height: 58px;
+      opacity: 0;
+    }
+  }
+
+}

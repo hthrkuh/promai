@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/server_side
+    ports:
+      - 4000:4000
+    image: app:server
+    container_name: server_container
+    command: npm start
