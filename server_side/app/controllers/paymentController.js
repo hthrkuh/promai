@@ -2,7 +2,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const { logPayment } = require("./crmController"); // Import the CRM logging function
 
 const processPayment = async (req, res) => {
-    const { gif, user } = req.body;
+    const { gif } = req.body;
 
     const userId = req.user?.id;
 

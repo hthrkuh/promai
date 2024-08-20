@@ -5,10 +5,18 @@ const bcrypt = require("bcrypt");
 // Example user array (for demonstration purposes only)
 const users = [
     {
+        id: 0,
+        username: "manger",
+        passwordHash:
+            "$2b$10$G4sNLTajBrT/NVdL5zURY.LQk0Dld2o40JYCjEFjngE3fppMJQIy6",
+        role: 0
+    },
+    {
         id: 1,
         username: "user1",
         passwordHash:
-            "$2b$10$G4sNLTajBrT/NVdL5zURY.LQk0Dld2o40JYCjEFjngE3fppMJQIy6"
+            "$2b$10$G4sNLTajBrT/NVdL5zURY.LQk0Dld2o40JYCjEFjngE3fppMJQIy6",
+        role: 1
     }
 ];
 
@@ -37,7 +45,7 @@ const login = async (req, res) => {
     }
 
     // Generate JWT token
-    const payload = { id: user.id };
+    const payload = { id: user.id, role: user.role, userName: username };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
         expiresIn: "1h"
     });

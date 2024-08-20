@@ -12,6 +12,7 @@ dotenv.config();
 
 const routes = require("./app/routes");
 const authRoutes = require("./app/routes/authRoutes");
+const { authenticateToken } = require("./app/helpers/authMiddleware");
 
 const app = express();
 
@@ -28,8 +29,6 @@ app.set("view engine", "ejs");
 // app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.static(path.join(__dirname, "build")));
-
-const authenticateToken = require("./app/helpers/authMiddleware"); // Import the authentication middleware
 
 app.use("/login", authRoutes);
 app.use("/api", authenticateToken, routes);

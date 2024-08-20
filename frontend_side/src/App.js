@@ -10,6 +10,7 @@ import Success from "./components/Success";
 import { AuthProvider } from "./components/AuthContext"; // Import AuthProvider
 import ProtectedRoute from "./components/ProtectedRoute"; // Import ProtectedRoute
 import Header from "./components/header";
+import ManageCRM from "./components/ManageCRM"; // Import the new component
 
 function App() {
     return (
@@ -31,6 +32,15 @@ function App() {
                             />
                             <Route path="/success" element={<Success />} />
                             <Route path="/auth" element={<Auth />} />
+                            <Route
+                                path="/manage"
+                                element={
+                                    <ProtectedRoute
+                                        element={<ManageCRM />}
+                                        requiredRole={0}
+                                    />
+                                }
+                            />
                         </Routes>
                     </div>
                 </AuthProvider>
